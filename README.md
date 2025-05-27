@@ -1,12 +1,43 @@
-# <img align="left" src="_images/spotless_logo.png"> Spotless: Keep your code spotless
+![](_images/spotless_logo.png)
+
 
 [![Gradle Plugin](https://img.shields.io/gradle-plugin-portal/v/com.diffplug.spotless?color=blue&label=gradle%20plugin)](plugin-gradle)
 [![Maven Plugin](https://img.shields.io/maven-central/v/com.diffplug.spotless/spotless-maven-plugin?color=blue&label=maven%20plugin)](plugin-maven)
 [![SBT Plugin](https://img.shields.io/badge/sbt%20plugin-0.1.3-blue)](https://github.com/moznion/sbt-spotless)
 
-Spotless can format &lt;antlr | c | c# | c++ | css | flow | graphql | groovy | html | java | javascript | json | jsx | kotlin | less | license headers | markdown | objective-c | protobuf | python | scala | scss | shell | sql | typeScript | vue | yaml | anything> using &lt;gradle | maven | sbt | anything>.
-
-You probably want one of the links below:
+* allows
+  * formatting
+* support
+  * antlr
+  * c
+  * c#
+  * c++
+  * css
+  * flow
+  * graphql
+  * groovy
+  * html
+  * java
+  * javascript
+  * json
+  * jsx
+  * kotlin
+  * less
+  * license headers
+  * markdown
+  * objective-c
+  * protobuf
+  * python
+  * scala
+  * scss
+  * shell
+  * sql
+  * typeScript
+  * vue
+  * yaml
+  * gradle
+  * maven
+  * sbt
 
 ## [❇️ Spotless for Gradle](plugin-gradle) (with integrations for [VS Code](https://marketplace.visualstudio.com/items?itemName=richardwillis.vscode-spotless-gradle) and [IntelliJ](https://plugins.jetbrains.com/plugin/18321-spotless-gradle))
 
@@ -45,12 +76,24 @@ user@machine repo % mvn spotless:check
 
 ## How it works (for potential contributors)
 
-Ideally, a code formatter can do more than just find formatting errors - it should fix them as well. Such a formatter is just a `Function<String, String>`, which returns a formatted version of its potentially unformatted input.
-
-It's easy to build such a function, but there are some gotchas and lots of integration work ([newlines](https://github.com/diffplug/spotless/tree/main/plugin-gradle#line-endings-and-encodings-invisible-stuff), character [encodings](https://github.com/diffplug/spotless/blob/08340a11566cdf56ecf50dbd4d557ed84a70a502/testlib/src/test/java/com/diffplug/spotless/EncodingErrorMsgTest.java#L34-L38), [idempotency](https://github.com/diffplug/spotless/blob/main/PADDEDCELL.md), git [ratcheting](https://github.com/diffplug/spotless/tree/main/plugin-gradle#ratchet), and build-system integration). Spotless tackles those for you **so you can focus on just a simple `Function<String, String>` which can compose with any of the other formatters and build tools in Spotless' arsenal**.
+* code formatter
+  * == tool / 
+    * find formatting errors
+    * fix formatting errors
+  * == 👀`Function<String, String>` 👀/
+    * FROM potentially UNFORMATTED input -> returns a FORMATTED version
+    * OUR FOCUS -- to -- build
+    * lots of integration work -- done by Spotless --
+      * [newlines](https://github.com/diffplug/spotless/tree/main/plugin-gradle#line-endings-and-encodings-invisible-stuff)
+      * character [encodings](https://github.com/diffplug/spotless/blob/08340a11566cdf56ecf50dbd4d557ed84a70a502/testlib/src/test/java/com/diffplug/spotless/EncodingErrorMsgTest.java#L34-L38)
+      * [idempotency](https://github.com/diffplug/spotless/blob/main/PADDEDCELL.md)
+      * git [ratcheting](https://github.com/diffplug/spotless/tree/main/plugin-gradle#ratchet)
+      * build-system integration
+       `Function<String, String>`
 
 ## Current feature matrix
 
+* TODO:
 <!---freshmark matrix
 function lib(className)   { return '| [`' + className + '`](lib/src/main/java/com/diffplug/spotless/' + className.replaceAll('\\.', '/') + '.java) | ' }
 function extra(className) { return '| [`' + className + '`](lib-extra/src/main/java/com/diffplug/spotless/extra/' + className.replaceAll('\\.', '/') + '.java) | ' }
@@ -172,57 +215,3 @@ lib('yaml.JacksonYamlStep')                      +'{{yes}}       | {{yes}}      
 Many projects get harder to work on as they get bigger. Spotless is easier to work on than ever, and one of the reasons why is that we don't require contributors to "fill the matrix". If you want to [add Bazel support](https://github.com/diffplug/spotless/issues/76), we'd happily accept the PR even if it only supports the one formatter you use. And if you want to add FooFormatter support, we'll happily accept the PR even if it only supports the one build system you use.
 
 Once someone has filled in one square of the formatter/build system matrix, it's easy for interested parties to fill in any empty squares, since you'll now have a working example for every piece needed.
-
-## Acknowledgements
-
-- Thanks to [Konstantin Lutovich](https://github.com/lutovich) for [implementing and maintaining the Maven plugin](https://github.com/diffplug/spotless/pull/188), as well as fixing [remote-build cache support for Gradle](https://github.com/diffplug/spotless/pull/571).
-- Thanks to [Frank Vennemeyer](https://github.com/fvgh) for [Groovy support via greclipse](https://github.com/diffplug/spotless/issues/13), [C++ support via CDT](https://github.com/diffplug/spotless/issues/232), [XML support via WTP](https://github.com/diffplug/spotless/pull/241) and a huge body of work with other eclipse-based formatters.
-- Thanks to [Jonathan Bluett-Duncan](https://github.com/jbduncan) for
-  - implementing up-to-date checking [#31](https://github.com/diffplug/spotless/issues/31)
-  - breaking spotless into libraries [#56](https://github.com/diffplug/spotless/issues/56)
-  - lots of other things, but especially the diff support in `spotlessCheck`
-  - constant improvements on a variety of topics with high-quality code reviews
-- Thanks to [Daz DeBoer](https://github.com/bigdaz) for the reworking the guts of our Gradle plugin to support [buildcache](https://github.com/diffplug/spotless/pull/576), [InputChanges](https://github.com/diffplug/spotless/pull/607), and [lazy configuration](https://github.com/diffplug/spotless/pull/617).
-- Thanks to [Richard Willis](https://github.com/badsyntax) for creating the [VS Code extension for Spotless Gradle](https://marketplace.visualstudio.com/items?itemName=richardwillis.vscode-spotless-gradle).
-- Thanks to [Ryan Gurney](https://github.com/ragurney) for creating the [IntelliJ plugin for Spotless Gradle](https://plugins.jetbrains.com/plugin/18321-spotless-gradle).
-- Thanks to [Markus Heberling](https://github.com/tisoft) for adding [generic native formatters](https://github.com/diffplug/spotless/pull/949), [jsr-223 formatters](https://github.com/diffplug/spotless/pull/945), and [maven pom sorting](https://github.com/diffplug/spotless/pull/946).
-- Thanks to [Matthias Balke](https://github.com/matthiasbalke) for [adding support for Antlr](https://github.com/diffplug/spotless/pull/328).
-- Thanks to [Matthias Andreas Benkard](https://github.com/benkard) for adding support for google-java-format 1.8+ ([#563](https://github.com/diffplug/spotless/pull/563))
-- Thanks to [Thomas Broyer](https://github.com/tbroyer) for adding support for google-java-format's [skip-reflowing-long-strings option](https://github.com/diffplug/spotless/pull/929).
-- Thanks to [Ranadeep Polavarapu](https://github.com/RanadeepPolavarapu) for adding support for ktfmt ([#569](https://github.com/diffplug/spotless/pull/569))
-- Thanks to [Simon Gamma](https://github.com/simschla) for [adding support for npm-based formatters](https://github.com/diffplug/spotless/pull/283), [twice](https://github.com/diffplug/spotless/pull/606) including `prettier` and `tsfmt`.
-- Thanks to [Hakanai](https://github.com/hakanai) for adding [wildcards last support to the import sorter](https://github.com/diffplug/spotless/pull/956).
-- Thanks to [Kevin Brooks](https://github.com/k-brooks) for [updating all eclipse-based formatters to 4.13](https://github.com/diffplug/spotless/pull/482) and [fixing Groovy for multiproject](https://github.com/diffplug/spotless/issues/877).
-- Thanks to [Dylan Baroody](https://github.com/dylanbaroody) for fixing [sql formatting support for JDBI bind list params](https://github.com/diffplug/spotless/pull/955).
-- Thanks to [figroc](https://github.com/figroc) for adding [custom mavenCoordinate support to google-java-format](https://github.com/diffplug/spotless/pull/944#issuecomment-927565149).
-- Thanks to [Thomas Glaeser](https://github.com/tglaeser) for [finding](https://github.com/diffplug/spotless/issues/654) and [fixing](https://github.com/diffplug/spotless/pull/656) a file-permissions-clobbering bug.
-- Thanks to [Joan Goyeau](https://github.com/joan38) for [fixing scalafmt integration](https://github.com/diffplug/spotless/pull/260).
-- Thanks to [Nick Sutcliffe](https://github.com/nsutcliffe) for [fixing scalafmt post-2.0](https://github.com/diffplug/spotless/pull/416).
-- Thanks to [Baptiste Mesta](https://github.com/baptistemesta) for
-  - porting the DBeaver formatter to Spotless, and thanks to [DBeaver](https://dbeaver.jkiss.org/) and [its authors](https://github.com/serge-rider/dbeaver/graphs/contributors) for their excellent SQL formatter.
-  - making license headers date-aware [#179](https://github.com/diffplug/spotless/pull/179)
-- Thanks to [vmdominguez](https://github.com/vmdominguez) and [Luis Fors](https://github.com/luis-fors-cb) for adding the ability to limit formatting to specific files in Gradle ([#322](https://github.com/diffplug/spotless/pull/322)) and Maven ([#392](https://github.com/diffplug/spotless/pull/392)), respectively.
-- Thanks to [bender316](https://github.com/bender316) for fixing classloading on Java 9 ([#426](https://github.com/diffplug/spotless/pull/426)).
-- Thanks to [Stefan Oehme](https://github.com/oehme) for tons of help on the internal mechanics of Gradle.
-- Thanks to [eyalkaspi](https://github.com/eyalkaspi) for adding configurable date ranges to the date-aware license headers.
-- Thanks to [Andrew Parmet](https://github.com/andrewparmet) for adding [ktfmt support for kotlin gradle](https://github.com/diffplug/spotless/pull/583).
-- Thanks to [Oliver Horn](https://github.com/ohorn) for adding AOSP support for Spotless' google-java-format integration.
-- Formatting by Eclipse
-  - Special thanks to [Mateusz Matela](https://waynebeaton.wordpress.com/2015/03/15/great-fixes-for-mars-winners-part-i/) for huge improvements to the eclipse code formatter!
-- Thanks to [Zac Sweers](https://github.com/ZacSweers) for fixing the highly requested ktlint 0.34+ support ([#469](https://github.com/diffplug/spotless/pull/469)), multiple build updates and fixing a Gradle deprecation warning ([#434](https://github.com/diffplug/spotless/pull/434) and others).
-- Thanks to [Stephen Panaro](https://github.com/smpanaro) for adding support for ktlint FilenameRule ([#974](https://github.com/diffplug/spotless/pull/974)).
-- Thanks to [Nelson Osacky](https://github.com/runningcode) for android doc improvements, versions bump, and a build improvement.
-- Thanks to [Stanley Shyiko](https://github.com/shyiko) for his help integrating [ktlint](https://github.com/shyiko/ktlint).
-- Thanks to [Jonathan Leitschuh](https://github.com/JLLeitschuh) for adding [ktlint](https://github.com/shyiko/ktlint) support for [Gradle Kotlin DSL](https://github.com/gradle/kotlin-dsl) files.
-- Originally forked from [gradle-format-plugin](https://github.com/youribonnaffe/gradle-format-plugin) by Youri Bonnaffé.
-- Thanks to Ismaël Mejía for bumping eclipse-jdt deps to 4.11. [PR #60](https://github.com/diffplug/spotless/issues/381).
-- Thanks to Gábor Bernát for improvements to logging and multi-project support.
-- Thanks to [Oliver Szymanski](https://github.com/source-knights) for porting [tsfmt](https://github.com/diffplug/spotless/pull/553) and [prettier](https://github.com/diffplug/spotless/pull/555) to maven.
-- Thanks to Andrew Oberstar for improvements to formatting java source in non-java source sets. [PR #60](https://github.com/diffplug/spotless/pull/60).
-- Thanks to [Sameer Balasubrahmanyam](https://github.com/sameer-b) for [adding support for IntelliJ-style year placeholders](https://github.com/diffplug/spotless/pull/542).
-- Thanks to [Jamie Tanna](https://github.com/jamietanna) for [adding a simple JSON formatter](https://github.com/diffplug/spotless/pull/853).
-- Thanks to [Adib Saikali](https://github.com/asaikali) and [Paul Merlin](https://github.com/eskatos) for tracking down the tricky cause of [#506](https://github.com/diffplug/spotless/issues/506).
-- Import ordering from [EclipseCodeFormatter](https://github.com/krasa/EclipseCodeFormatter).
-- Built by [gradle](https://gradle.org/).
-- Tested by [junit](https://junit.org/).
-- Maintained by [DiffPlug](https://www.diffplug.com/).
